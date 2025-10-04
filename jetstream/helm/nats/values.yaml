@@ -1,0 +1,29 @@
+---
+
+config:
+  cluster:
+    enabled: true
+    replicas: 3
+
+  jetstream:
+    enabled: true
+    fileStore:
+      enabled: true
+      pvc:
+        size: 10Gi
+
+    memoryStore:
+      enabled: true
+      maxSize: 1Gi
+
+container:
+  env:
+    GOMEMLIMIT: 6GiB
+  merge:
+    resources:
+      requests:
+        cpu: "2"
+        memory: 8Gi
+      limits:
+        cpu: "2"
+        memory: 8Gi
